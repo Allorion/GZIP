@@ -1,6 +1,6 @@
 # -*- coding: utf8 -*-
 def pack():
-    with open(input('Введите ссылку на ваш файл: '), "r", encoding = 'utf-8') as file:
+    with open(input('Введите ссылку на ваш файл (файл кодировки "Utf-8")(test.txt): '), "r", encoding = 'utf-8') as file:
         contents = file.read()
         src = str(contents)
         file.close()
@@ -29,11 +29,11 @@ def pack():
     #Если хотим проверить эффективность сжатия
     #print(f'Сжатие символов (Сжатый текст - Исходный текст) {len(pack)} - {len(src)}')
     #print('pack: ' + pack)
-
+#cp1251
     save = input('Сохраним файл? (Да/Нет): ')
     if save == 'Да':
         name_save = input('Введите, название нового файла или ссылку куда хотите сохранить файл с его названием(test): ')
-        f = open(name_save + '.gz','w', encoding = 'utf-8')
+        f = open(name_save + '.gz','w', encoding = 'cp1251')
         f.writelines(pack)
         f.close()
     elif save == 'Нет':
@@ -42,7 +42,7 @@ def pack():
         print('Вы ввели неверные данные, проверьте регистр')
 
 def unpack():
-    with open(input('Введите ссылку на ваш файл: '), "r", encoding = 'utf-8') as file:
+    with open(input('Введите ссылку на ваш файл(test.gz): '), "r", encoding = 'cp1251') as file:
         contents = file.read()
         pack = str(contents)
         src = str(contents)

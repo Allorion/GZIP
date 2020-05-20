@@ -1,4 +1,4 @@
-# -*- coding: utf8 -*-s
+# -*- coding: utf8 -*-
 
 def fn_cmp(a, b):
     if a[0] > b[0]: return 1
@@ -69,7 +69,7 @@ def decompress(text_decompress, key_decompress):
 
 #== программа
 def huff_compress():
-    with open(input('Введите ссылку на ваш файл: '), "r", encoding = 'utf-8') as file:
+    with open(input('Введите ссылку на ваш файл (test.txt)(только кодировка "Utf-8"): '), "r", encoding = 'utf-8') as file:
         contents = file.read()
         text = str(contents)
         file.close()
@@ -95,14 +95,14 @@ def huff_compress():
 
 def huff_decompress():
 
-    file_decompress = open(input('Введите ссылку на ваш файл: '), "r", encoding = 'utf-8')
+    file_decompress = open(input('Введите ссылку на ваш файл (test.gz): '), "r", encoding = 'utf-8')
     contents_2 = file_decompress.read()
     text_decompress = bin(int(contents_2, 16)).replace('b', '')
     file_decompress.close()
     text_decompress = str(text_decompress)
 
 
-    file_key = open(input('Введите ссылку на ключ: '), "r", encoding = 'utf-8')
+    file_key = open(input('Введите ссылку на ключ (key.gz): '), "r", encoding = 'utf-8')
     str_lst = file_key.read()
     key_decompress = eval(str_lst)
     file_key.close()
