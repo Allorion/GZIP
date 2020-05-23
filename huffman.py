@@ -76,7 +76,19 @@ def huff_compress():
 
     dc_haf = make_dict(text)
     compressed_text = compress(text, dc_haf)
-    compressed_text2 = hex(int(compressed_text, 2))
+    ass = int(compressed_text[0])
+    if ass == 0:
+        t = str(compressed_text)
+        count = 0
+        for i in t:
+            count += 1
+            if i == "1":
+                break
+        count = count - 1
+        compressed_text2 = hex(int(compressed_text, 2))
+        compressed_text2 = (f'{count}q{compressed_text2}')
+    else:
+        compressed_text2 = hex(int(compressed_text, 2))
 
     save = input('Сохраним файл? (Да/Нет): ')
     if save == 'Да':
@@ -97,8 +109,14 @@ def huff_decompress():
 
     file_decompress = open(input('Введите ссылку на ваш файл (test.gz): '), "r", encoding = 'utf-8')
     contents_2 = file_decompress.read()
-    text_decompress = bin(int(contents_2, 16)).replace('b', '')
-    file_decompress.close()
+    wwe = int(contents_2[0])
+    if wwe > 0:
+        for y in range(wwe):
+            contents_2 = contents_2.replace(f'{wwe}q', '')
+            text_decompress = bin(int(contents_2, 16)).replace('0b', '')
+            text_decompress = (f'0{text_decompress}')
+    else:
+        text_decompress = bin(int(contents_2, 16)).replace('0b', '')
     text_decompress = str(text_decompress)
 
 
